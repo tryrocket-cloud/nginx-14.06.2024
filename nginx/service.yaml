@@ -8,6 +8,6 @@ spec:
   ports:
     - name: nginx
       protocol: TCP
-      port: 99
+      port: 80
       targetPort: 80
   type: LoadBalancer
