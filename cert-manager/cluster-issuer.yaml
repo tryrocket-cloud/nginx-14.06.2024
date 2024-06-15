@@ -5,8 +5,8 @@ metadata:
 spec:
   acme:
     # You can also use the staging environment to test your setup:
-    server: https://acme-staging-v02.api.letsencrypt.org/directory
-    # server: https://acme-v02.api.letsencrypt.org/directory
+    #server: https://acme-staging-v02.api.letsencrypt.org/directory
+    server: https://acme-v02.api.letsencrypt.org/directory
     email: max.wassiljew@proton.me
     privateKeySecretRef:
       name: letsencrypt-cloudflare
