@@ -12,7 +12,6 @@ spec:
       protocol: UDP
       port: 53
       targetPort: 53
-      nodePort: 53
     - name: dhcp
       protocol: UDP
       port: 67
