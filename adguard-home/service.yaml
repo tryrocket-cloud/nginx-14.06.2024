@@ -16,10 +16,10 @@ spec:
     #   protocol: UDP
     #   port: 67
     #   targetPort: 67
-    # - name: http
-    #   protocol: TCP
-    #   port: 80
-    #   targetPort: 80
+    - name: http
+      protocol: TCP
+      port: 100
+      targetPort: 80
     # - name: http1
     #   protocol: TCP
     #   port: 3000
