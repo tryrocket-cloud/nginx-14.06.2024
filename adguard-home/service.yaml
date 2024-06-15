@@ -10,7 +10,7 @@ spec:
   ports:
     - name: dns
       protocol: UDP
-      port: 53
+      port: 10053
       targetPort: 53
     # - name: dhcp
     #   protocol: UDP
@@ -18,10 +18,10 @@ spec:
     #   targetPort: 67
     - name: http
       protocol: TCP
-      port: 100
+      port: 10000
       targetPort: 80
     - name: http1
       protocol: TCP
-      port: 101
+      port: 10001
       targetPort: 3000
   type: LoadBalancer
