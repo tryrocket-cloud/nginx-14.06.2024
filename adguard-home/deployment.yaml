@@ -21,8 +21,8 @@ spec:
             - containerPort: 67 # DHCP port (UDP), if enabled
             - containerPort: 80 # Web UI port (TCP)
           volumeMounts:
-            - name: adguard-config
-              mountPath: /opt/adguardhome/conf # Mount AdGuard Home configuration directory
+            # - name: adguard-config
+            #   mountPath: /opt/adguardhome/conf # Mount AdGuard Home configuration directory
             - name: adguard-data
               mountPath: /opt/adguardhome/work # Mount AdGuard Home data directory
       volumes:
