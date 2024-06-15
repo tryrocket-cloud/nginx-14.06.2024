@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: adguard-home
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: adguard-home
+  template:
+    metadata:
+      labels:
+        app: adguard-home
+    spec:
+      containers:
+        - name: adguard-home
+          image: adguard/adguardhome:latest
+          ports:
+            - containerPort: 53 # DNS port (UDP)
+            - containerPort: 67 # DHCP port (UDP), if enabled
+            - containerPort: 80 # Web UI port (TCP)
+          volumeMounts:
+            - name: adguard-config
+              mountPath: /opt/adguardhome/conf # Mount AdGuard Home configuration directory
+            - name: adguard-data
+              mountPath: /opt/adguardhome/work # Mount AdGuard Home data directory
+      volumes:
+        - name: adguard-config
+          configMap:
+            name: adguard-config # Reference to ConfigMap containing AdGuard Home configuration
+        - name: adguard-data
+          emptyDir: {} # EmptyDir for temporary data storage (non-persistent)
