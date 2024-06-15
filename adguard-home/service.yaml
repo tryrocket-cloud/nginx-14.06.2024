@@ -20,8 +20,8 @@ spec:
       protocol: TCP
       port: 100
       targetPort: 80
-    # - name: http1
-    #   protocol: TCP
-    #   port: 3000
-    #   targetPort: 3000
+    - name: http1
+      protocol: TCP
+      port: 101
+      targetPort: 3000
   type: LoadBalancer
