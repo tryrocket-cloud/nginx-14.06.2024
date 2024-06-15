@@ -1,0 +1,14 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: tryrocket-cloud
+  namespace: default
+spec:
+  secretName: tryrocket-cloud-tls
+  issuerRef:
+    name: letsencrypt-cloudflare
+    kind: ClusterIssuer
+  commonName: tryrocket.cloud
+  dnsNames:
+    - tryrocket.cloud
+    - adguard.tryrocket.cloud
