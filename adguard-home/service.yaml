@@ -4,7 +4,7 @@ metadata:
   name: adguard-home
   namespace: adguard-home
 spec:
-  externalTrafficPolicy: Local
+  externalTrafficPolicy: Local # Keep traffic local to the node
   selector:
     app: adguard-home
   ports:
@@ -25,4 +25,4 @@ spec:
       protocol: TCP
       port: 3000
       targetPort: 3000
-  type: NodePort
+  type: LoadBalancer
