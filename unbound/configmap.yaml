@@ -6,6 +6,9 @@ metadata:
 data:
   unbound.conf: |
     server:
+        # Set the working directory for the program.
+        directory: "/opt/unbound/etc"
+
         # If no logfile is specified, syslog is used
         # logfile: "/var/log/unbound/unbound.log"
         verbosity: 5
