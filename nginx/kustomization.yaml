@@ -3,7 +3,7 @@ kind: Kustomization
 
 namespace: nginx-kustomize
 
-commonLabels:
+labels:
   app.kubernetes.io/name: nginx
   app.kubernetes.io/instance: production-1
   app.kubernetes.io/version: v1.2.3
@@ -17,4 +17,3 @@ resources:
   - deployment.yaml
   - service.yaml
   - namespace.yaml
-
