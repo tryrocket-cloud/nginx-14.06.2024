@@ -4,12 +4,12 @@ metadata:
   name: adguard-home-ingress
   namespace: adguard-home
   annotations:
-    cert-manager.io/cluster-issuer: letsencrypt-cloudflare
+    cert-manager.io/cluster-issuer: letsencrypt-cloudflare-production
 spec:
   tls:
     - hosts:
         - adguard.tryrocket.cloud
-      secretName: tryrocket-cloud-tls
+      secretName: tryrocket-cloud-http-tls
   rules:
     - host: adguard.tryrocket.cloud
       http:

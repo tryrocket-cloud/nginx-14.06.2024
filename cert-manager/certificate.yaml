@@ -4,12 +4,10 @@ metadata:
   name: tryrocket-cloud
   namespace: default
 spec:
-  secretName: tryrocket-cloud-tls
+  secretName: tryrocket-cloud-http-tls
   issuerRef:
-    name: letsencrypt-cloudflare
+    name: letsencrypt-cloudflare-production
     kind: ClusterIssuer
-  commonName: tryrocket.cloud
+  commonName: '*.tryrocket.cloud'
   dnsNames:
-    - tryrocket.cloud
-    - adguard.tryrocket.cloud
-    - nginx.tryrocket.cloud
+    - '*.tryrocket.cloud'
