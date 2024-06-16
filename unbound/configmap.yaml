@@ -11,7 +11,7 @@ data:
         verbosity: 5
 
         interface: 127.0.0.1
-        port: 5335
+        port: 53
         do-ip4: yes
         do-udp: yes
         do-tcp: yes
