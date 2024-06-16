@@ -17,6 +17,11 @@ spec:
         - name: unbound
           image: mvance/unbound-rpi:latest
           # image: mvance/unbound:latest
+          ports:
+            - containerPort: 53
+              protocol: UDP
+            - containerPort: 53
+              protocol: TCP
           volumeMounts:
             - name: unbound-config
               mountPath: /opt/unbound/etc/unbound/unbound.conf
