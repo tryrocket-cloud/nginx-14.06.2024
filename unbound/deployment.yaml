@@ -19,7 +19,7 @@ spec:
           # image: mvance/unbound:latest
           volumeMounts:
             - name: unbound-config
-              mountPath: /opt/unbound/etc/unbound/unbound.conf
+              mountPath: /opt/unbound/etc/unbound.conf
               subPath: unbound.conf
       volumes:
         - name: unbound-config
