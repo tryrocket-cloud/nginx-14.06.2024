@@ -64,7 +64,7 @@ data:
         # and port.
         interface: 0.0.0.0@53
         # interface: ::0
-        port: 53
+        port: 54
 
         # If enabled, prefer IPv6 transport for sending DNS queries to internet
         # nameservers.
