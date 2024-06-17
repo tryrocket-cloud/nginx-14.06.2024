@@ -22,14 +22,18 @@ spec:
           volumeMounts:
             - name: memos-data
               mountPath: /var/opt/memos
+          ports:
+            - name: http
+              containerPort: 5230
+              protocol: TCP
           livenessProbe:
             httpGet:
               path: /
-              port: 5230
+              port: http
           readinessProbe:
             httpGet:
               path: /
-              port: 5230
+              port: http
           resources:
       volumes:
         - name: memos-data
