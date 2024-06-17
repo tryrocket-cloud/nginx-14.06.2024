@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: invidious
-          image: quay.io/invidious/invidious:2024.04.26-eda7444
+          image: quay.io/invidious/invidious:2024.04.26-eda7444-arm64
           env:
             - name: INVIDIOUS_CONFIG
               value: |
