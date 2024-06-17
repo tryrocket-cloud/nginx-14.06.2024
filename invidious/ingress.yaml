@@ -5,6 +5,7 @@ metadata:
   namespace: invidious
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt-cloudflare-production
+    traefik.ingress.kubernetes.io/redirect-entry-point: https
 spec:
   tls:
     - hosts:
