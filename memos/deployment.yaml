@@ -16,6 +16,11 @@ spec:
       containers:
         - name: memos
           image: neosmemo/memos:latest
+          args:
+            - '--driver'
+            - 'postgres'
+            - '--dsn'
+            - 'postgresql://myuser:mypassword@postgres.postgres.svc.cluster.local:5432/mydatabase1?sslmode=disable'
           env:
             - name: MEMOS_PORT
               value: '5230'
