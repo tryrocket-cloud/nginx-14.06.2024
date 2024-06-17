@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: homer
+  namespace: homer
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-cloudflare-production
+spec:
+  tls:
+    - hosts:
+        - homer.tryrocket.cloud
+      secretName: tryrocket-cloud-http-tls
+  rules:
+    - host: homer.tryrocket.cloud
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: homer
+                port:
+                  number: 8080
