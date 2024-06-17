@@ -4,7 +4,7 @@ metadata:
   name: memos
   namespace: memos
 spec:
-  type: LoadBalancer
+  type: ClusterIP
   selector:
     app: memos
   ports:
