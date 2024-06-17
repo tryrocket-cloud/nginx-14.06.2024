@@ -16,9 +16,19 @@ spec:
       containers:
         - name: memos
           image: neosmemo/memos:stable
+          env:
+            - name: MEMOS_PORT
+              value: '5230'
           volumeMounts:
             - name: memos-data
               mountPath: /var/opt/memos
+          resources:
+            requests:
+              memory: '256Mi'
+              cpu: '250m'
+            limits:
+              memory: '512Mi'
+              cpu: '500m'
       volumes:
         - name: memos-data
           emptyDir: {} # EmptyDir for temporary data storage (non-persistent)
