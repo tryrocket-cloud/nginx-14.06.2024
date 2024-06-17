@@ -24,11 +24,11 @@ spec:
               mountPath: /var/opt/memos
           resources:
             requests:
-              memory: '1Mi'
+              memory: '5Mi'
               cpu: '1m'
             limits:
-              memory: '5Mi'
-              cpu: '5m'
+              memory: '10Mi'
+              cpu: '1m'
       volumes:
         - name: memos-data
           emptyDir: {} # EmptyDir for temporary data storage (non-persistent)
