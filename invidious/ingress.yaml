@@ -1,3 +1,14 @@
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: invidious-https-redirect
+  namespace: invidious
+spec:
+  redirectScheme:
+    scheme: https
+    permanent: true
+---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
@@ -5,8 +16,9 @@ metadata:
   namespace: invidious
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt-cloudflare-production
-    kubernetes.io/ingress.class: traefik
-    traefik.ingress.kubernetes.io/redirect-entry-point: https
+    traefik.ingress.kubernetes.io/router.entrypoints: web
+    # MUST be <namespace>-<name>@kubernetescrd
+    traefik.ingress.kubernetes.io/router.middlewares: invidious-invidious-https-redirect@kubernetescrd
 spec:
   tls:
     - hosts:
