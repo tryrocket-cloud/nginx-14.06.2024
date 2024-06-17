@@ -22,7 +22,7 @@ spec:
             - name: MEMOS_DRIVER
               value: postgres
             - name: MEMOS_DSN
-              value: postgresql://myuser:mypassword@postgres.postgres.svc.cluster.local:5432/mydatabase?sslmode=disable
+              value: postgresql://myuser:mypassword@postgres.postgres.svc.cluster.local:5432/mydatabase1
           volumeMounts:
             - name: memos-data
               mountPath: /var/opt/memos
