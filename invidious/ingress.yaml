@@ -16,9 +16,11 @@ metadata:
   namespace: invidious
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt-cloudflare-production
-    traefik.ingress.kubernetes.io/router.entrypoints: web
+    #traefik.ingress.kubernetes.io/router.entrypoints: web
     # MUST be <namespace>-<name>@kubernetescrd
-    traefik.ingress.kubernetes.io/router.middlewares: invidious-invidious-https-redirect@kubernetescrd
+    #traefik.ingress.kubernetes.io/router.middlewares: invidious-invidious-https-redirect@kubernetescrd
+    traefik.ingress.kubernetes.io/redirect-entry-point: 'https'
+    traefik.ingress.kubernetes.io/redirect-permanent: 'true'
 spec:
   tls:
     - hosts:
@@ -26,7 +28,7 @@ spec:
       secretName: tryrocket-cloud-http-tls
   rules:
     - host: invidious.tryrocket.cloud
-      https:
+      http:
         paths:
           - path: /
             pathType: Prefix
