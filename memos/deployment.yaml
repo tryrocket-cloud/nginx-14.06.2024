@@ -19,6 +19,10 @@ spec:
           env:
             - name: MEMOS_PORT
               value: '5230'
+            - name: MEMOS_DRIVER
+              value: postgres
+            - name: MEMOS_DSN
+              value: postgresql://myuser:mypassword@postgres.postgres.svc.cluster.local:5432/mydatabase
           volumeMounts:
             - name: memos-data
               mountPath: /var/opt/memos
