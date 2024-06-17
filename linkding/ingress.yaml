@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: linkding
+  namespace: linkding
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-cloudflare-production
+spec:
+  tls:
+    - hosts:
+        - linkding.tryrocket.cloud
+      secretName: tryrocket-cloud-http-tls
+  rules:
+    - host: linkding.tryrocket.cloud
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: linkding
+                port:
+                  number: 9090
