@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: invidious
+  namespace: invidious
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-cloudflare-production
+spec:
+  tls:
+    - hosts:
+        - invidious.tryrocket.cloud
+      secretName: tryrocket-cloud-http-tls
+  rules:
+    - host: invidious.tryrocket.cloud
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: invidious
+                port:
+                  number: 3000

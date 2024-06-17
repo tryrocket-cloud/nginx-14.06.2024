@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: invidious
+  namespace: invidious
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: invidious
+  template:
+    metadata:
+      labels:
+        app: invidious
+    spec:
+      containers:
+        - name: invidious
+          image: quay.io/invidious/invidious:2024.04.26-eda7444
+          env:
+            - name: INVIDIOUS_CONFIG
+              value: |
+                db:
+                  dbname: invidious
+                  user: 'myuser'
+                  password: 'mypassword'
+                  host: 'postgres.postgres.svc.cluster.local'
+                  port: 5432
+                  check_tables: true
+                hmac_key: 'bddfa303-f45f-48d1-bf06-e7870ab0770cq'
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 3000
+            initialDelaySeconds: 30
+            periodSeconds: 60
+            timeoutSeconds: 10
+            failureThreshold: 3
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 3000
+            initialDelaySeconds: 15
+            periodSeconds: 15
+            timeoutSeconds: 10
+            failureThreshold: 3
+          resources:
