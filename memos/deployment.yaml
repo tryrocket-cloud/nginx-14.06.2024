@@ -28,9 +28,9 @@ spec:
               value: postgres
             - name: MEMOS_DSN
               value: postgresql://myuser:mypassword@postgres.postgres.svc.cluster.local:5432/mydatabase1?sslmode=disable
-          volumeMounts:
-            - name: memos-data
-              mountPath: /var/opt/memos
+          # volumeMounts:
+          #   - name: memos-data
+          #     mountPath: /var/opt/memos
           ports:
             - name: http
               containerPort: 5230
@@ -44,6 +44,6 @@ spec:
               path: /
               port: http
           resources:
-      volumes:
-        - name: memos-data
-          emptyDir: {} # EmptyDir for temporary data storage (non-persistent)
+      # volumes:
+      #   - name: memos-data
+      #     emptyDir: {} # EmptyDir for temporary data storage (non-persistent)
