@@ -25,11 +25,11 @@ spec:
           livenessProbe:
             httpGet:
               path: /
-              port: http
+              port: 5230
           readinessProbe:
             httpGet:
               path: /
-              port: http
+              port: 5230
           resources:
       volumes:
         - name: memos-data
