@@ -3,13 +3,16 @@ kind: Service
 metadata:
   name: traefik-dashboard
   namespace: kube-system
+  labels:
+    app.kubernetes.io/instance: traefik
+    app.kubernetes.io/name: traefik-dashboard
 spec:
-  type: NodePort
+  type: ClusterIP
+  ports:
+    - name: traefik
+      port: 9000
+      targetPort: traefik
+      protocol: TCP
   selector:
     app.kubernetes.io/instance: traefik-kube-system
     app.kubernetes.io/name: traefik
-  ports:
-    - name: http
-      protocol: TCP
-      port: 8000
-      targetPort: 8000

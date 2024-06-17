@@ -3,6 +3,8 @@ kind: Ingress
 metadata:
   name: traefik-ingress
   namespace: kube-system
+  annotations:
+    spec.ingressClassName: traefik
 spec:
   rules:
     - host: traefik.tryrocket.cloud
