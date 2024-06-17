@@ -72,4 +72,4 @@ data:
         private-address: fd00::/8
         private-address: fe80::/10
 
-        do-not-query-localhost: no
+        do-not-query-localhost: yes
