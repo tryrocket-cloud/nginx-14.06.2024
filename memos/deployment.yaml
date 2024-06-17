@@ -25,10 +25,10 @@ spec:
           resources:
             requests:
               memory: '5Mi'
-              cpu: '1m'
+              cpu: '5m'
             limits:
               memory: '10Mi'
-              cpu: '1m'
+              cpu: '10m'
       volumes:
         - name: memos-data
           emptyDir: {} # EmptyDir for temporary data storage (non-persistent)
