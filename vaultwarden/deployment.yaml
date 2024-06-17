@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vaultwarden
+  namespace: vaultwarden
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: vaultwarden
+  template:
+    metadata:
+      labels:
+        app: vaultwarden
+    spec:
+      containers:
+        - name: vaultwarden
+          image: docker.io/vaultwarden/server:latest
+          env:
+            - name: DOMAIN
+              value: https://vaultwarden.tryrocket.cloud
+            - name: ROCKET_PORT
+              value: '8080'
+            - name: ADMIN_TOKEN
+              value: '$argon2id$v=19$m=65540,t=3,p=4$NGpHTUx5UHQyeldZdmFtb1d3T3JmVmlCY3BzTW9BRUNlUFQvZnBKTUZ5UT0$3oUREYYD6MVnctdDoOguDcnlpEcbD1epFKirtgc8huE'
+            - name: SIGNUPS_ALLOWED
+              value: 'false'
+            - name: INVITATIONS_ALLOWED
+              valeu: 'false'
+            - name: DATABASE_URL
+              value: postgresql://myuser:mypassword@postgres.postgres.svc.cluster.local/vaultwarden
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 8080
+            initialDelaySeconds: 30
+            periodSeconds: 60
+            timeoutSeconds: 10
+            failureThreshold: 3
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 8080
+            initialDelaySeconds: 15
+            periodSeconds: 15
+            timeoutSeconds: 10
+            failureThreshold: 3
+          resources:
