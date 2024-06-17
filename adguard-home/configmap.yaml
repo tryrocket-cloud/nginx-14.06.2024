@@ -11,5 +11,6 @@ data:
       bind_host: 0.0.0.0
       port: 53
       upstream_dns:
+        - unbound.unbound.svc.cluster.local
         - 1.1.1.1
         - 8.8.8.8

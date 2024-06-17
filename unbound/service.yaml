@@ -4,15 +4,15 @@ metadata:
   name: unbound
   namespace: unbound
 spec:
-  type: NodePort
-  ports:
-    - port: 53
-      targetPort: 53
-      protocol: UDP
-      name: dns-udp
-    - port: 53
-      targetPort: 53
-      protocol: TCP
-      name: dns-tcp
+  type: ClusterIP
   selector:
     app: unbound
+  ports:
+    - name: dns-udp
+      port: 53
+      targetPort: 53
+      protocol: UDP
+    - name: dns-tcp
+      port: 53
+      targetPort: 53
+      protocol: TCP
