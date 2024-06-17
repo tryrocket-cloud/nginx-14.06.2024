@@ -19,8 +19,8 @@ metadata:
     #traefik.ingress.kubernetes.io/router.entrypoints: web
     # MUST be <namespace>-<name>@kubernetescrd
     #traefik.ingress.kubernetes.io/router.middlewares: invidious-invidious-https-redirect@kubernetescrd
-    traefik.ingress.kubernetes.io/redirect-entry-point: 'https'
-    traefik.ingress.kubernetes.io/redirect-permanent: 'true'
+    #traefik.ingress.kubernetes.io/redirect-entry-point: 'https'
+    #traefik.ingress.kubernetes.io/redirect-permanent: 'true'
 spec:
   tls:
     - hosts:
