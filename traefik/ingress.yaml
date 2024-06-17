@@ -3,13 +3,7 @@ kind: Ingress
 metadata:
   name: traefik-ingress
   namespace: kube-system
-  annotations:
-    cert-manager.io/cluster-issuer: letsencrypt-cloudflare-production
 spec:
-  tls:
-    - hosts:
-        - traefik.tryrocket.cloud
-      secretName: tryrocket-cloud-http-tls
   rules:
     - host: traefik.tryrocket.cloud
       http:
