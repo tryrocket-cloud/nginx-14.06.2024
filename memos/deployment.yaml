@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: memos
+  namespace: memos
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: memos
+  template:
+    metadata:
+      labels:
+        app: memos
+    spec:
+      containers:
+        - name: memos
+          image: neosmemo/memos:stable
+          volumeMounts:
+            - name: memos-data
+              mountPath: /var/opt/memos
+          r
+      volumes:
+        - name: memos-data
+          emptyDir: {} # EmptyDir for temporary data storage (non-persistent)
