@@ -1,0 +1,31 @@
+# pgadmin-deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pgadmin
+  namespace: postgres
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pgadmin
+  template:
+    metadata:
+      labels:
+        app: pgadmin
+    spec:
+      containers:
+        - name: pgadmin
+          image: dpage/pgadmin4:latest
+          ports:
+            - containerPort: 80
+          envFrom:
+            - configMapRef:
+                name: pgadmin-config
+          volumeMounts:
+            - mountPath: /var/lib/pgadmin
+              name: pgadmin-data
+          resources:
+      volumes:
+        - name: pgadmin-data
+          emptyDir: {} # EmptyDir for temporary data storage (non-persistent)

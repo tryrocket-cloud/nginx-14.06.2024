@@ -1,0 +1,9 @@
+# pgadmin-configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: pgadmin-config
+  namespace: postgres
+data:
+  PGADMIN_DEFAULT_EMAIL: 'admin@example.com'
+  PGADMIN_DEFAULT_PASSWORD: 'admin'
