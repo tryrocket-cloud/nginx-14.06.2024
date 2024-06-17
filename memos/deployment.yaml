@@ -15,13 +15,22 @@ spec:
     spec:
       containers:
         - name: memos
-          image: neosmemo/memos:stable
+          image: neosmemo/memos:latest
           env:
             - name: MEMOS_PORT
               value: '5230'
           volumeMounts:
             - name: memos-data
               mountPath: /var/opt/memos
+          livenessProbe:
+            httpGet:
+              path: /
+              port: http
+          readinessProbe:
+            httpGet:
+              path: /
+              port: http
+          resources:
       volumes:
         - name: memos-data
           emptyDir: {} # EmptyDir for temporary data storage (non-persistent)
