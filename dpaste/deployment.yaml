@@ -18,7 +18,7 @@ spec:
           image: darrenofficial/dpaste:latest
           env:
             - name: DATABASE_URL
-              value: postgres://myuser:mypassword@postgres.postgres.svc.cluster.local:5432/dpaste
+              value: postgresql://myuser:mypassword@postgres.postgres.svc.cluster.local/dpaste
             - name: SECRET_KEY
               value: mysecretkey
           livenessProbe:
