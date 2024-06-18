@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dpaste
+  namespace: dpaste
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dpaste
+  template:
+    metadata:
+      labels:
+        app: dpaste
+    spec:
+      containers:
+        - name: dpaste
+          image: darrenofficial/dpaste:latest
+          env:
+            - name: DATABASE_URL
+              value: postgres://myuser:mypassword@unbound.unbound.svc.cluster.local:5432/dpaste
+            - name: SECRET_KEY
+              value: mysecretkey
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 8000
+            initialDelaySeconds: 30
+            periodSeconds: 60
+            timeoutSeconds: 10
+            failureThreshold: 3
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 8000
+            initialDelaySeconds: 15
+            periodSeconds: 15
+            timeoutSeconds: 10
+            failureThreshold: 3
+          resources:

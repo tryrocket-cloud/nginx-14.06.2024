@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: dpaste
+  namespace: dpaste
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-cloudflare-production
+spec:
+  tls:
+    - hosts:
+        - dpaste.tryrocket.cloud
+      secretName: tryrocket-cloud-http-tls
+  rules:
+    - host: dpaste.tryrocket.cloud
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: dpaste
+                port:
+                  number: 8000
